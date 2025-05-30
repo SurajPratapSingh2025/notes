@@ -18,40 +18,39 @@
 
 ## JavaScript Concept
 
-* JavaScript 於 1995 年由任職 Netscape 的 [Brendan Eich](https://twitter.com/BrendanEich) 所創 
+* JavaScript was created in 1995 by [Brendan Eich](https://twitter.com/BrendanEich) while working at Netscape
 
-* ECMAScript 為 JavaScript 的標準化名稱
+* ECMAScript is the standardized name for JavaScript
 
 <br />
 
 ## JavaScript Core
 
 <a name="lexical-structure"></a>
-Lexical Structure
+### Lexical Structure
 
-  * JavaScript 的程式，需使用 Unicode 字元集撰寫 (ES5 要求實作支援 Unicode 3 later)
+  * JavaScript programs should be written using the Unicode character set (ES5 requires implementations to support Unicode 3 and later)
 
-  * JavaScript 會區分大小寫，因此「關鍵字、變數、函式名稱、識別字」必須要大小寫一致
+  * JavaScript is case-sensitive, so "keywords, variables, function names, and identifiers" must maintain consistent casing
 
-  * **字面值 (_literal_)** : 直接出現在程式中的資料值
+  * **Literal**: A data value that appears directly in program code
 
-    ex :
+    Examples:
     ```javascript
-    12                  // 數字 12
-    1.2                 // 數字 1.2
-    "hello world"       // 一列字串
-    {x:1, y:2}          // 物件初值設定式
-    [1, 2, 3, 4, 5]     // 陣列初值設定式
+    12                  // The number 12
+    1.2                 // The number 1.2
+    "hello world"       // A string
+    {x:1, y:2}          // Object initializer
+    [1, 2, 3, 4, 5]     // Array initializer
     ```
 
-  * **識別字 (_identifier_)** : 就是個名稱，用來為「變數、函式名稱、迴圈中的標籤」命名，必須是「字母、底線、錢幣符號」開頭，接續字元可以是「字母、數字、底線、錢幣符號」
+  * **Identifier**: A name used to identify "variables, functions, or labels in loops". Must start with "a letter, underscore, or dollar sign", followed by "letters, digits, underscores, or dollar signs"
 
-  * **保留字** : 不能用做識別字的語彙
+  * **Reserved words**: Cannot be used as identifiers
 
-    ex :
-
+    Examples:
     ```javascript
-    break、class、var 或 int
+    break, class, var, or int
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -60,234 +59,189 @@ Lexical Structure
 <br />
 
 <a name="types-values-and-variables"></a>
-Types, Values, and Variables
+### Types, Values, and Variables
 
-  * JavaScript 型別分成兩類：基本型別 (_primitive types_) 與 物件型別 (_object types_)
+  * JavaScript types are divided into two categories: primitive types and object types
 
-  * **基本型別 (_primitive types_)**：數字、字串、布林值、null、undefined
+  * **Primitive types**: numbers, strings, booleans, null, undefined
 
-  * **物件型別 (_object types_)**：任何不是基本型別者，皆是物件型別
+  * **Object types**: Anything that's not a primitive type is an object type
 
-  * JavaScript 變數不具型別 (_untyped_)、採用語彙範疇 (_lexical scoping_)、變數用 `var` 宣告 (_declare_)
+  * JavaScript variables are untyped, use lexical scoping, and are declared with `var`
 
-  * JavaScript 中的數字都以浮點數值 (_floating-point values_) 表示，不是整數值 (_integer values_)，**切記運算時可能會有誤差**
+  * All numbers in JavaScript are represented as floating-point values (not integers). **Be aware of potential precision errors in calculations**
 
-  * 數值運算的結果大於最大可表示的數字時，結果會是無限值 `Infinity` (_infinity value_)
+  * When a numeric operation results in a value larger than the maximum representable number, the result is the special infinity value `Infinity`
 
-  * 零除以零會是非數值 `NaN` (_not-a-number value_)
+  * Dividing zero by zero results in `NaN` (not-a-number)
 
-  * **字串字面值**：只要把字串的字元包在成對的單、雙引號 (_single or double quotes_) 中即可
+  * **String literals**: Enclose string characters in matching single or double quotes
 
-    ex :
-
+    Examples:
     ```javascript
-    ""            // 空字串
+    ""            // Empty string
     'testing'
     "3.14"
     ```
 
-  * **字串字面值中的轉義序列 (_escape sequence_)**：用於表示字串中本來無法表示的字元，用 `\` 來操作
+  * **Escape sequences in string literals**: Used to represent characters that can't be directly represented, using `\`
 
-    ex :
-
+    Example:
     ```javascript
     'You\'re right, it can\'t be a quote'
     ```
 
-  * **字串串接 (_concatenate strings_)**：`+` 運算子，可將兩字串連接起來
+  * **String concatenation**: The `+` operator joins strings together
 
-    ex :
-
+    Example:
     ```javascript
     msg = 'Hello, ' + 'World';     // => 'Hello, World'
     ```
 
-  * **null**：這個值代表沒有值存在 (_the absence of a value_)
+  * **null**: Represents the absence of a value
 
-  * **undefined**：包含在以下幾種情況中「尚未初始化的變數、調用不存在的物件特性或陣列元素、沒有回傳值的函式、沒有提供對應引數 (_argument_) 的函式參數 (_parameter_)」
+  * **undefined**: Occurs in these situations: uninitialized variables, accessing non-existent object properties or array elements, functions with no return value, function parameters with no corresponding arguments
 
-  * **全域物件 (_global object_)**：當 JavaScript 直譯器啟動 或 瀏覽器載入新頁面，它會創建一個全域物件，並給它下列初始特性：
+  * **Global object**: When the JavaScript interpreter starts or when a browser loads a new page, it creates a global object with these initial properties:
 
-    * undefined、Infinity、NaN
+    * undefined, Infinity, NaN
 
-    * isNaN()、parseInt()、eval()
+    * isNaN(), parseInt(), eval()
 
-    * Date()、RegExp()、String()、Object() 這類建構函式
+    * Constructor functions like Date(), RegExp(), String(), Object()
 
-    * Math 與 JSON 這類全域物件
+    * Global objects like Math and JSON
 
-  * **this 關鍵字**：不是一個常數，它的估算值會隨著在程式中的位置而改變
+  * **The `this` keyword**: Not a constant - its value changes depending on where it appears in the code
 
-    > 不同於變數，this 關鍵字沒有範疇 (_scope_)
+    > Unlike variables, the `this` keyword doesn't have scope
 
-    - 在 **頂層 (_top-level_)** 中：this 參考至全域物件
+    - At the **top-level** (code not inside any function): `this` refers to the global object
 
-      > top-level：即不包含在任何函式定義內的程式碼
+    - Function invocation: `this` refers to the global object (or `undefined` in strict mode)
 
-    - 函式調用：this 參考至全域物件，strict 模式中 為 `undefined`
+    - Method invocation: `this` refers to the object the method belongs to
 
-    - 方法調用：this 參考至方法所屬的物件
-
-    ex :
-
+    Example:
     ```javascript
     var obj = {
-
       m: function() {
-
         var self = this;
-
         console.log(this === obj);       // => true
-
+        
         func();
-
+        
         function func() {
-
-          console.log(this === obj);     // => false，this 為全域物件 或 undefined
-          console.log(self === obj);     // => true，self 是外層的 this 值
+          console.log(this === obj);     // => false, `this` is global object or undefined
+          console.log(self === obj);     // => true, `self` is outer `this`
         }
       }
     };
-
     obj.m();
     ```
 
-  * **外覆物件 (_wrapper object_)**：每當參考「字串、數字、布林值」的特性，JavaScript 就會將它們轉為一個暫時物件，這個物件繼承了對應型別的原型特性，一旦特性被參考完畢，這個暫時物件就被丟棄，**null 與 undefined**並無此種物件，**此物件的特性是唯讀且不得定義新特性**
+  * **Wrapper objects**: When you refer to a property of a string, number, or boolean, JavaScript converts it to a temporary object. This object inherits properties from the corresponding prototype. After the property reference, the temporary object is discarded. **null and undefined** don't have wrapper objects. **These object properties are read-only and you can't define new properties**
 
-  * **基本型別 (_primitive types_)**：是用值 (_by value_) 相比，值是不可變的 (_immutable_)，兩者具有相同的值時，兩值相等
+  * **Primitive types**: Compared by value, values are immutable. Two values are equal if they contain the same value
 
-    ex：
-
+    Example:
     ```javascript
-    var s = 'hello';     // 創建一些小寫文字
-    s.toUpperCase();     // 回傳 'HELLO'，但沒有更動 s
-    s                    // => 'hello'：原字串並未改變
+    var s = 'hello';     // Create a lowercase string
+    s.toUpperCase();     // Returns 'HELLO' but doesn't modify s
+    s                    // => 'hello': original string unchanged
     ```
 
-  * **物件型別 (_object types_)**：是參考 (_by references_) 相比，值是可變的 (_mutable_)，兩者即便擁有相同的特性，也不相等; 除非指涉至 (_refer to_) 同一個物件時，才相等
+  * **Object types**: Compared by reference, values are mutable. Two objects with identical properties are not equal unless they refer to the same object
 
-    ex：
-
+    Example:
     ```javascript
-    var a = [];          // 變數 a 指涉一個空陣列
-    var b = a;           // 現在 b 也指涉至同一個陣列
-    b[0] = 1;            // 使 b 指涉的陣列變異
-    a[0]                 // => 1：透過變數 a 也可以看見這個改變
-    a === b              // => true：a 與 b 指涉至同一個物件，所以它們相等
+    var a = [];          // Variable a references an empty array
+    var b = a;           // Now b references the same array
+    b[0] = 1;            // Modify the array through b
+    a[0]                 // => 1: The change is visible through a
+    a === b              // => true: a and b reference the same object
     ```
 
-  * **明確的 (_explicit_) 型別轉換**：可透過轉換函式轉換型別
+  * **Explicit type conversion**: Use conversion functions
 
-    ex :
-
+    Examples:
     ```javascript
     Number('3')       // => 3
     String(false)     // => 'false'
     Boolean([])       // => true
-    Object(3)         // => new Number(3)
+    Object(3)        // => new Number(3)
     ```
 
-  * **變數宣告 (_variable declare_)**：使用 `var`，可用同一個關鍵字宣告多個變數，也可直接初始化 (_initialization_)，只宣告並未初始化的變數，它的值會是 `undefined`
+  * **Variable declaration**: Use `var`. You can declare multiple variables with one `var` keyword and initialize them. Undeclared variables have the value `undefined`
 
-    ex :
-
+    Example:
     ```javascript
     var i, sum;
-
     var x = 0, y = 1, z = 2;
     ```
 
-    > automatically global：If you assign a value to a variable that has not been declared, it will automatically become a global variable. Even if the value is assigned inside a function.
+    > Automatically global: If you assign a value to a variable that hasn't been declared, it automatically becomes a global variable, even if the assignment is inside a function.
 
-    > global variables are not created automatically in "Strict Mode".
+    > Global variables are not created automatically in "Strict Mode".
 
-  * **變數範疇 (_variable scope_)**：在頂層 (_top-level_) 宣告的變數為全域變數 (_global variable_)，在函式主體中定義的變數為區域變數 (_local variable_)，函式參數 (_parameters_) 也算區域變數
+  * **Variable scope**: Variables declared at the top-level are global. Variables declared in a function body are local. Function parameters are also local variables.
 
-  * **變數優先序 (_precedence_)**：區域變數的優先序，比同樣名稱的全域變數還高
+  * **Variable precedence**: Local variables take precedence over global variables with the same name
 
-    ex :
-
+    Example:
     ```javascript
-    var scope = 'global';        // 宣告全域變數
-
+    var scope = 'global';        // Declare global variable
+    
     function checkScope() {
-
-        var scope = 'local';     // 宣告同名的區域變數
-
-        return scope;            // 回傳區域變數的值
+      var scope = 'local';       // Declare local variable with same name
+      return scope;              // Return local variable's value
     }
-
+    
     checkScope();                // => 'local'
     ```
 
-  * **函式範疇 (_function scope_)**：只有在定義變數的函式及其內的任何巢狀函式中，才看得到這些變數
+  * **Function scope**: Variables are visible within the function they're defined in and any nested functions
 
     > Each function creates a new scope.
 
-  * **全域變數 (_global variables_)**
-
-    - A variable declared outside a function, becomes global.
-
-    - A global variable has global scope：All scripts and functions on a web page can access it.
-
-    > 當你宣告一個全域變數，實際上你是定義全域物件中的一個特性
-
+  * **Global variables**:
+    - A variable declared outside a function becomes global.
+    - A global variable has global scope: All scripts and functions can access it.
+    > When you declare a global variable, you're actually defining a property of the global object
     > In HTML, the global scope is the window object. All global variables belong to the window object.
 
-  * **區域變數 (_local variables_)**
+  * **Local variables**:
+    - Variables declared within a JavaScript function become local to the function.
+    - Local variables have local scope: They can only be accessed within the function.
 
-    - Variables declared within a JavaScript function, become local to the function.
+  * **Variable lifetime**:
+    - Starts when declared.
+    - Local variables are deleted when the function completes.
+    - In browsers, global variables are deleted when you close the window/tab.
 
-    - Local variables have local scope：They can only be accessed within the function.
-
-  * The Lifetime of JavaScript Variables
-
-    - The lifetime of a JavaScript variable starts when it is declared.
-
-    - Local variables are deleted when the function is completed.
-
-    - In a web browser, global variables are deleted when you close the browser window (or tab).
-
-  * **拉升 (_Hoisting_)**：`var` 宣告的變數 和 `function` 宣告的函式，都會被 "拉升" 至範疇的頂端
-
-    - Variable declarations are processed before any code is executed.
-
+  * **Hoisting**: `var` declarations and `function` declarations are "hoisted" to the top of their scope
+    - Declarations are processed before any code executes.
     - JavaScript only hoists declarations, not initializations.
+    - For function declarations, both the name and function body are hoisted.
 
-    - 對於函式宣告述句，函式名稱與函式主體兩者都會被 "拉升"
-
-    ex :
-
+    Examples:
     ```javascript
-    // 函式宣告拉升
-
+    // Function declaration hoisting
     foo();
-    function foo() {     // 此函式被拉升了
-
-    }
-
-    // 實際執行時，會將上述程式碼以下列方式執行
-
-    function foo() {
-
-    }
-
+    function foo() {}  // This function is hoisted
+    
+    // Actual execution:
+    function foo() {}
     foo();
-
-    // 變數宣告拉升
-
+    
+    // Variable declaration hoisting
     foo();
-    var foo = function () {
-
-    };
-
-    // 實際執行時，會將上述程式碼以下列方式執行
-
+    var foo = function() {};
+    
+    // Actual execution:
     var foo;
-    foo();     // TypeError：undefined is not a function
-    foo = function () {
-
-    };
+    foo();     // TypeError: undefined is not a function
+    foo = function() {};
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -296,20 +250,19 @@ Types, Values, and Variables
 <br />
 
 <a name="expressions-and-operators"></a>
-Expressions and Operators
+### Expressions and Operators
 
-  * **運算式 (_expression_)**：直譯器可以估算 (_evaluate_) 它，進而產生一個結果值
+  * **Expression**: Something the interpreter can evaluate to produce a value
 
-  * **運算子 (_operators_)**：運算子大多用標點符號 (_punctuation_) 來表示，擁有優先序 (_precedence_)、結合律 (_associativity_)
+  * **Operators**: Most operators are represented by punctuation. They have precedence and associativity.
 
-  * **運算元 (_operands_)**：被運算子所估算 (_evaluate_) 的元素
+  * **Operands**: The elements that operators evaluate
 
-    ex :
-
+    Examples:
     ```javascript
-    1 + 2;          // => 3; + 為運算子，1 和 2 為運算元
+    1 + 2;          // => 3; + is operator, 1 and 2 are operands
     11 < 3;         // => true
-    delete o.x;     // 刪除物件 o 的特性 x
+    delete o.x;     // Delete property x of object o
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -318,197 +271,136 @@ Expressions and Operators
 <br />
 
 <a name="statements"></a>
-Statements
+### Statements
 
-  * **條件述句 (_conditional statements_)**：`if`、`else if`、`switch`
+  * **Conditional statements**: `if`, `else if`, `switch`
 
-    ex :
-
+    Examples:
     ```javascript
     // if statement
-
     if (username === null) {
-
-        username = 'Justin Ho';
-
+      username = 'Justin Ho';
     } else {
-
-        console.log(username);
-
+      console.log(username);
     }
-
+    
     // else if statement
-
     if (x === 1) {
-
-        // 執行程式區塊 1
-
+      // Execute block 1
     } else if (x === 2) {
-
-        // 執行程式區塊 2
-
+      // Execute block 2
     } else if (x === 3) {
-
-        // 執行程式區塊 3
-
+      // Execute block 3
     } else {
-
-        // 所有的條件都不滿足，就執行程式碼區塊 4
+      // Execute block 4 if no conditions match
     }
-
+    
     // switch statement
-
-    /* case 匹配與否是由 === 同一性 (identity) 運算子所判定
-     *
-     * ECMAScript 標準允許每個 case 後面跟的可以是任意運算式
-     *
-     * 如果沒有匹配的 case 且不存在 default: 標籤，則跳過整個 switch 主體
+    /* Case matching uses === identity operator
+     * ECMAScript allows any expression after case
+     * If no case matches and no default, skip entire switch body
      */
-
     switch (x) {
-
-        case 'number':     // 如果 x 等於 'number'，則執行此處
-          // 執行程式區塊 1
-          break;
-
-        case 'string':
-          // 執行程式碼區塊 2
-          break;
-
-        default:           // 如果都沒有找到相同的值，則執行此處
-          //執行程式碼區塊 3
-          break;           // 在這裡停止執行
+      case 'number':     // If x equals 'number'
+        // Execute block 1
+        break;
+      case 'string':
+        // Execute block 2
+        break;
+      default:           // If no matches
+        // Execute block 3
+        break;           // Stop execution
     }
     ```
 
-  * **迴圈述句 (_looping statements_)**：`while`、`do/while`、`for`、`for/in`
+  * **Loop statements**: `while`, `do/while`, `for`, `for/in`
 
-    ex :
-
+    Examples:
     ```javascript
-
     // while statement
-
     var count = 0;
-
     while (count < 10) {
-
-        console.log(count);
-        count++;
+      console.log(count);
+      count++;
     }
-
+    
     // do/while statement
-
     var array = [1, 2, 3];
-    var len = array.length, i = 0
-
+    var len = array.length, i = 0;
     do {
-
-        console.log(array[i]);
-
+      console.log(array[i]);
     } while (++i < len);
-
+    
     // for statement
-
     for (var count = 0; count < 10; count++) {
-
-        console.log(count);
+      console.log(count);
     }
-
+    
     // for/in statement
-
-    /* 直譯器僅會列出物件中可列舉的 (enumerable) 特性
+    /* Only enumerable properties are listed
      */
-
-    for (var p in o) {         // 指定 o 的特性名稱給變數 p
-
-        console.log(o[p]);     // 印出每個特性值
+    for (var p in o) {         // Assign property names of o to p
+      console.log(o[p]);       // Print each property value
     }
     ```
 
-  * **被加上標籤的述句 (_labeled statement_)**：為述句加上一個標籤，可在程式其他地方參考此述句，標籤名稱可以是任何合法的識別字，但不能是保留字，標籤的名稱與變數、函式名稱的命名空間不同
+  * **Labeled statements**: Add a label to a statement for reference elsewhere. Label names can be any legal identifier (not reserved words). Label names are in a different namespace from variables and functions.
 
-    ex :
-
+    Example:
     ```javascript
     mainloop: while (token != null) {
-
-        // 省略程式碼...
-
-        continue mainloop;     // 跳至具名 (named) 迴圈的下一次迭代
-
-        // 省略更多程式碼...
+      // Code omitted...
+      continue mainloop;     // Jump to next iteration of named loop
+      // More code omitted...
     }
     ```
 
-  * **跳躍述句 (_jump statements_)**：`break`、`continue`、`return`、`try/catch/finally`
+  * **Jump statements**: `break`, `continue`, `return`, `try/catch/finally`
 
-    ex :
-
+    Examples:
     ```javascript
     // break statement
-
     for (var i = 0; i < a.length; i++) {
-
-        if (a[i] == target) {
-
-            break;     // 可使最內層的外圍迴圈，立即終止並跳離
-        }
+      if (a[i] == target) {
+        break;     // Immediately terminate innermost loop
+      }
     }
-
+    
     // continue statement
-
     for (i = 0; i < data.length; i++) {
-
-        if (!data[i]) {
-
-            continue;     // 重新開始下一次迭代
-        }
-
-        total += data[i];
+      if (!data[i]) {
+        continue;     // Start next iteration
+      }
+      total += data[i];
     }
-
+    
     // return statement
-
     function square(x) {
-
-        return x*x;     // 回傳該運算式的值給呼叫者 (caller)
+      return x*x;     // Return value to caller
     }
-
+    
     // try/catch/finally statement
-
-    /* 當有例外 (exception) 被拋出，直譯器會立刻停止正常的程式執行流程
-     *
-     * 並跳至最近的例外處理器 (exception handler)，也就是 catch block
-     *
-     * try：用來界定需要例外處理的程式碼範圍
-     *
-     * catch：try 區塊只要有例外拋出，catch 區塊即刻被調用
-     *
-     * finally：不管 try 有無拋出例外，該區塊都會被執行
-     *
-     * catch、finally 區塊都是非必需的，但至少要有一個伴隨 try 區塊
+    /* When exception is thrown, interpreter stops normal execution
+     * and jumps to nearest exception handler (catch block)
+     * try: Defines code block to test for errors
+     * catch: Executes if try block throws exception
+     * finally: Executes regardless of try block outcome
+     * At least one of catch/finally must accompany try
      */
-
     try {
-
-        // 欲執行的程式碼放這裡
-
-    } catch (exception) {     // exception 具有區塊範疇 (block scope)，只在 catch 區塊被定義
-
-        // 在此處理捕獲的例外，可透過 exception 來參考拋出的 物件 或 值
-
+      // Code to try
+    } catch (exception) {     // exception has block scope
+      // Handle exceptions
     } finally {
-
-        // try 區塊以下列任一種方式終止時，它們就會被執行：
-
-        // 1) 抵達區塊結尾後正常結束
-        // 2) 因為 break、continue 或 return 述句
-        // 3) 有例外發生，並被上方的 catch 子句所處理
-        // 4) 有個未被捕獲的例外，仍在傳遞
+      // Executes when try block ends:
+      // 1) Normally reaches end
+      // 2) Due to break/continue/return
+      // 3) Exception caught by catch
+      // 4) Uncaught exception propagating
     }
     ```
-  * 'use strict'：指出接在其後的程式碼屬於**strict 程式碼**，如果函式主體是定義在 strict 程式碼之中，該函式也屬於 strict 程式碼
+
+  * 'use strict': Indicates that following code is strict code. If a function body is defined in strict code, that function is also strict.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -516,122 +408,100 @@ Statements
 <br />
 
 <a name="objects"></a>
-Objects
+### Objects
 
-  * 物件是特性的集合
+  * Objects are collections of properties
 
-  * 每個特性均有其相關連的特性屬性 (_property attributes_)
+  * Each property has associated property attributes:
+    * writable: Can the value be changed?
+    * enumerable: Can the property be returned by for/in?
+    * configurable: Can the property be deleted or its attributes modified?
 
-    * 可寫 (_writable_)：指明該特性的值能否被更動
+  * Each object has associated object attributes:
+    * prototype: Reference to inherited object
+    * class: String identifying object type
+    * extensible: Can new properties be added?
 
-    * 可列舉 (_enumerable_)：指明該特性名稱是否可被 for/in 迴圈回傳
+  * Create objects using: object literals, `new` keyword, or `Object.create()`
+    - The `new` keyword must be followed by a function call (constructor)
+    > Besides built-in constructors (Object, Date, RegExp), you can define your own
 
-    * 可配置 (_configurable_)：指明該特性是否可被刪除，以及它的屬性能否被更動
-
-  * 每個物件均有其相關連的物件屬性 (_object attributes_)
-
-    * (_prototype_)：指明該物件繼承至哪個物件
-
-    * (_class_)：是個字串，用以區分該物件的種類
-
-    * (_extensible_)：指明是否可在該物件加入新特性
-
-  * 創建物件可透過 3 種方式「物件字面值 (_object literal_)、new 關鍵字、Object.create()」
-
-    - new 關鍵字後面必須接著函式調用，透過這種方式調用的函式稱為**建構式 (_constructor_)**
-
-      > 除了內建的建構式 (Object、Date、RegExp...etc) 之外，也可以定義自己的建構式來初始化並創建物件
-
-    ex :
-
+    Examples:
     ```javascript
-    // 物件字面值
-
+    // Object literal
     var empty = {};
     var point = {x:0, y:0};
     var point2 = {x: point.x, y:point.y+1};
     var book = {
-        "main title": "JavaScript",
-        'sub-title': "The Definitive Guide",
-        "for": "all audiences",
-        author: {
-            firstname: "David",
-            surname: "Flanagan",
-        }
+      "main title": "JavaScript",
+      'sub-title': "The Definitive Guide",
+      "for": "all audiences",
+      author: {
+        firstname: "David",
+        surname: "Flanagan"
+      }
     };
-
-    // new 關鍵字
-
-    var o = new Object();         // 創建空物件，等同於 {}
-    var a = new Array();          // 創建空陣列，等同於 []
-    var d = new Date();           // 創建代表目前時間的 Date 物件
-    var r = new RegExp("js");     // 創建用來範式比對的 RegExp 物件
-
+    
+    // new keyword
+    var o = new Object();         // Empty object, same as {}
+    var a = new Array();          // Empty array, same as []
+    var d = new Date();           // Date object for current time
+    var r = new RegExp("js");     // RegExp object for pattern matching
+    
     // Object.create()
-
-    var o1 = Object.create({x: 1, y: 2});     // o1 繼承了特性 x 與 y
-    var o2 = Object.create(null);             // o2 不會繼承任何特性或方法
+    var o1 = Object.create({x:1, y:2});     // o1 inherits x and y
+    var o2 = Object.create(null);           // o2 inherits nothing
     ```
 
-  * 每個物件都有第二個物件與之關聯，而這第二個物件就稱為原型，第一個物件就從這個原型繼承特性
+  * Every object has a prototype object from which it inherits properties
 
-  * **原型鏈 (_prototype chain_)**：物件與原型之間繼承的關係就稱為原型鏈
+  * **Prototype chain**: The inheritance relationship between objects
 
-  * 所有用物件字面值建立的物件，都有同一個原型物件，我們用 Object.prototype 來參考這個原型物件
+  * Objects created with object literals have the same prototype object: `Object.prototype`
 
-  * 透過 new 關鍵字與建構式調用所產生的物件，其原型為**建構函式 (_constructor function_)** 的 prototype 特性值
+  * Objects created with `new` and constructor functions have the constructor's `prototype` property as their prototype
+    > Objects created with `new Object()` inherit from `Object.prototype` (same as `{}`)
+    > Objects created with `new Date()` have `Date.prototype` as prototype
 
-    > 由 new Object() 創建的物件繼承自 Object.prototype 與 {} 創建的物件相同
+  * `Object.create()` can create objects with specified prototypes or no prototype
 
-    > 由 new Date() 創建的物件，其原型為 Date.prototype
+  * Access properties using `.` or `[]` operators
 
-  * Object.create() 建立的物件，可指定原型或不繼承任何原型物件
-
-  * 要獲取或設定特性的值可透過「`.`、`[]`」運算子
-
-    ex :
-
+    Examples:
     ```javascript
-    // 獲取
-
+    // Get
     var author = book.author;
     var name = author.surname;
     var title = book['main title']
-
-    // 設定
-
+    
+    // Set
     book.edition = 6;
     book['main title'] = 'ECMAScript';
     book['Hello' + 'World'] = 'helloworld';
     ```
 
-  * 如果已存在繼承特性 (_inherited property_) x，再新增一個同名的自有特性 x，則此自有特性會覆寫 (_override_) 繼承特性 x
+  * If an inherited property x exists, adding an own property x shadows (overrides) the inherited property
 
-  * 特性的指定會檢視原型鏈 (_prototype chain_)，判斷這個指定是否可行，如果該指定被允許，它只會在原本的物件上新建或設定特性，永遠不會修改到原型鏈中的物件
+  * Property assignment checks the prototype chain to determine if allowed. If allowed, it creates/sets the property on the original object, never modifying prototype chain objects
 
-  * 繼承只在查用特性時發生，而不在設定特性時發生，意思是無法透過繼承去修改原型物件的特性
+  * Inheritance happens when querying properties, not when setting them. You can't modify prototype properties through inheritance
 
-  * 刪除指定特性可透過「`delete`」運算子，但只能刪除自有特性，且不會刪除 configurable 屬性為 false 的特性
+  * Delete properties with `delete` operator. Only works on own properties, and won't delete non-configurable properties
 
-    ex :
-
+    Examples:
     ```javascript
-    delete bookauthor;
+    delete book.author;
     delete book['main title'];
     ```
 
-  * 查看物件的指定特性屬性可透過 `Object.getOwnPropertyDescriptor()`
+  * Check property attributes with `Object.getOwnPropertyDescriptor()`
 
-    ex :
-
+    Example:
     ```javascript
     var o = {x:1, y:2, z:3};
-
     console.log(Object.getOwnPropertyDescriptor(o, 'y'));
-
-    // 回傳值如下
-
-    /* [object Object] {
+    /* Returns:
+     * {
      *   configurable: true,
      *   enumerable: true,
      *   value: 2,
@@ -640,70 +510,45 @@ Objects
      */
     ```
 
-  * 設定物件特性的屬性可透過 `Object.defineProperty()`
+  * Set property attributes with `Object.defineProperty()`
 
-    ex :
-
+    Example:
     ```javascript
     var o = {};
-
     Object.defineProperty(o, 'x', {
-
-        value: 1,
-        writable: true,
-        enumerable: false,
-        configurable: true
-
+      value: 1,
+      writable: true,
+      enumerable: false,
+      configurable: true
     });
-
-    // 查看特性是否存在
-
     o.x;     // => 1
     ```
 
-  * 設定多筆物件特性與其屬性可透過 `Object.defineProperties()`
+  * Set multiple properties with `Object.defineProperties()`
 
-  * 遍歷物件中的特性可透過下列方式
+  * Enumerate object properties:
+    - Own properties: `Object.getOwnPropertyNames(object)` (includes non-enumerable)
+    - Inherited properties: `for-in` loop (enumerable properties only)
 
-    - 自有特性 (_own properties_)：Object.getOwnPropertyNames(object)，包含不可列舉的特性
+  * Get/set object attributes:
+    - Prototype:
+      - Get: `Object.getPrototypeOf(object)`
+      - Set: `Object.setPrototypeOf(object, prototype)`
+    - Class:
+      - Get: `Object.prototype.toString.call(object).slice(8, -1)` (only indirect way)
+      - Set: Not possible
+    - Extensible:
+      > All built-in and user-defined objects are extensible by default
+      - Get: `Object.isExtensible(object)`
+      - Set: `Object.preventExtensions(object)` (makes object non-extensible)
 
-    - 繼承特性 (_inherited properties_)：for-in 迴圈，列出自有、繼承的可列舉的特性
+  * **Object serialization**: Convert objects to strings and back
 
-  * 讀取、設定物件屬性 (_object attributes_)
-
-    - 原型 (_prototype_)
-
-      - 讀取：Object.getPrototypeOf(object)
-
-      - 設定：Object.setPrototypeOf(object, prototype)
-
-    - 類別 (_class_)
-
-      - 讀取：Object.prototype.toString.call(object).slice(8, -1)，僅有此間接方式可取得
-
-      - 設定：無
-
-    - 擴充性 (_extensible_)
-
-      > 所有內建與使用者自定義的物件，預設都是可擴充的
-
-      - 讀取：Object.isExtensible(object)，判斷物件是否為可擴充
-
-      - 設定：Object.preventExtensions(object)，將物件設為不可擴充(_nonextensible_)
-
-  * **物件序列化 (_serialization_)**：將物件轉成字串，並讓它可由字串復原成物件
-
-    ex :
-
+    Example:
     ```javascript
-    var o = {x:1, y:{z:[false, null, '']}};     // 定義一個物件
-
-    var s = JSON.stringify(o);                  // 序列化 物件o，將 物件o 轉成字串
-
-    var p = JSON.parse(s);                      // 復原被序列化的 物件 o
-
-    // 調用被復原的 物件o 特性
-
+    var o = {x:1, y:{z:[false, null, '']}};     // Define object
+    var s = JSON.stringify(o);                  // Serialize to string
+    var p = JSON.parse(s);                      // Deserialize back to object
     console.log(p.y.z[0]);                      // => false
     ```
 
@@ -713,61 +558,53 @@ Objects
 <br />
 
 <a name="arrays"></a>
-Arrays
+### Arrays
 
-  * 陣列的元素可以是任何的型別，同一陣列中的不同元素可能具有不同型別
+  * Array elements can be any type, and different elements can have different types
 
-  * 建立陣列元素可透過 `[]`、`new Array()`，**陣列字面值允許在結尾加上逗號**
+  * Create arrays with `[]` or `new Array()`. **Array literals allow trailing commas**
 
-    ex :
-
+    Examples:
     ```javascript
-    var empty = [];                    // 空陣列
-    var primes = [2, 3, 5, 7, 11];     // 五個數值元素的陣列
-    var misc = [1.1, true, 'a',];      // 三個不同型別的元素，加上尾隨的逗號
-
+    var empty = [];                    // Empty array
+    var primes = [2, 3, 5, 7, 11];     // Array with 5 numbers
+    var misc = [1.1, true, 'a',];      // 3 elements + trailing comma
+    
     var base = 1024;
-    var table = [base, base + 1, base + 2, base + 3];
-
+    var table = [base, base+1, base+2, base+3];
+    
     var count = [1,,3];     // count[1] => undefined
-    var undefs = [,,];      // 稀疏陣列
-
-    var a = new Array();                          // 等同於 []
-    var a = new Array(10);                        // 指定陣列長度
-    var a = new Array(5, 4, 3, 2, 1, 'test');     // 含有六個元素的陣列
+    var undefs = [,,];      // Sparse array
+    
+    var a = new Array();                          // Same as []
+    var a = new Array(10);                        // Specify length
+    var a = new Array(5, 4, 3, 2, 1, 'test');     // 6-element array
     ```
 
-  * 讀取或寫入陣列的值可透過 `[]`
+  * Read/write array elements with `[]`
 
-    ex :
-
+    Example:
     ```javascript
-    var a = ['world'];          // 建立具有單一元素的陣列
-    var value = a[0];           // 讀取元素 0
-    var a[1] = 3.14;            // 寫入元素 1
-
+    var a = ['world'];          // Single-element array
+    var value = a[0];           // Read element 0
+    a[1] = 3.14;                // Write element 1
+    
     var i = 2;
-    var a[i + 1] = 'hello';     // 寫入元素 3
+    a[i+1] = 'hello';           // Write element 3
     ```
 
-  * forEach()：可迭代所有元素，第一個參數為函式，forEach() 會用三個引數呼叫你指定的函式，而缺點是無法使用 `break` 關鍵字中斷
+  * `forEach()`: Iterates through all elements. First argument is a function called with three arguments. Cannot use `break` to terminate.
 
-    - 第一個引數：陣列元素值
+    - First argument: array element value
+    - Second argument: array index
+    - Third argument: array itself
 
-    - 第二個引數：陣列元素的索引
-
-    - 第三個引數：陣列本身
-
-    ex :
-
+    Example:
     ```javascript
     var data = [1, 2, 3, 4, 5];
-
     data.forEach(function(value, index, array) {
-
       array[index] = value + 1;
     });
-
     console.log(data);     // => [2, 3, 4, 5, 6]
     ```
 
@@ -777,223 +614,169 @@ Arrays
 <br />
 
 <a name="functions"></a>
-Functions
+### Functions
 
-  * **函式 (_function_)**：是 JavaScript 的程式碼區塊，僅定義一次，可以被多次調用 (_invoked_)
+  * **Function**: A block of JavaScript code defined once but can be invoked multiple times
 
-  * 如果一個函式被指定給物件的特性，則稱為方法 (_method_)
+  * When assigned to an object property, it's called a method
 
-  * 函式宣告可透過 `function`
+  * Function declaration with `function`
 
-    ex :
-
+    Example:
     ```javascript
-    function distance(x1, y1, x2, y2) {          // distance 為函式名稱，後面 () 包覆的內容為參數 (parameters)
-
-        var dx = x2 - x1;
-        var dy = y2 - y1;
-
-        return Math.sqrt(dx * dx + dy * dy);     // 透過 return 回傳此函數的回傳值
+    function distance(x1, y1, x2, y2) {          // distance is function name, () contains parameters
+      var dx = x2 - x1;
+      var dy = y2 - y1;
+      return Math.sqrt(dx*dx + dy*dy);           // Return value with return
     }
     ```
 
-  * 函式宣告實際上是宣告一個變數，然後把函式物件指定給它，而函式運算式則沒有宣告變數
+  * Function declarations actually declare a variable and assign the function object to it. Function expressions don't declare variables.
 
-  * 函式運算式的函式名稱是**非必要的**
+  * Function expressions can omit the function name
 
-    ex :
-
+    Examples:
     ```javascript
     var x = 10;
-    var square = function(x) {return x * x;}
+    var square = function(x) {return x*x;};
     console.log(square(x));                                 // => 100
-
-    data.sort(function(a, b) {return a-b;});                // 函式運算式也可以當作其他函式的引數
-
-    var tensquared = (function(x) {return x * x} (10));     // 函式運算式也可以在宣告後立即調用
+    
+    data.sort(function(a,b) {return a-b;});                // Function expressions as arguments
+    
+    var tensquared = (function(x) {return x*x}(10));       // Immediately invoked function expression
     ```
 
-  * 調用函式可透過四種方式「`函式調用`、`方法調用`、`建構式調用`、`間接調用`」
+  * Invoke functions four ways: "as functions", "as methods", "as constructors", and "indirectly"
+    - Invocation context:
+      - Function invocation: In ES3 and non-strict ES5, context is global object. In strict mode, it's `undefined`
+      - Method invocation: The object the method belongs to is the context (referenced with `this`)
+      - Constructor invocation: Creates new object which becomes context (referenced with `this`)
+      - Indirect invocation: First argument of call()/apply() specifies context
 
-    - 調用情境
-
-      - 函式調用：ES3 及 非strict的ES5中，調用情境為全域物件，在strict模式中，則為 `undefined`
-
-      - 方法調用：調用方法的物件即是調用情境，可用關鍵字 `this` 參考該物件
-
-      - 建構式調用：建構式調用會產生一個新物件，此物件即是調用情境，可用關鍵字 `this` 參考該物件
-
-      - 間接調用：call() 與 apply() 方法的第一個參數即可指定調用情境
-
-    ex :
-
+    Examples:
     ```javascript
-    // 函式調用
-
+    // Function invocation
     printprops(10, 5);
-
-    // 方法調用
-
+    
+    // Method invocation
     o.printprops(10, 5);
-
-    // 建構式調用
-
+    
+    // Constructor invocation
     var o = new Object();
     var o = new Object;
-
-    // 間接調用
-
-    f.call(o);           // 把函式 f() 當成物件 o 的方法來調用
+    
+    // Indirect invocation
+    f.call(o);           // Invoke f() as method of o
     f.apply(o);
-    f.call(o, 1, 2);     // 第一個引數指出要在哪個物件上調用函式，之後的引數為要傳入函式的引數
+    f.call(o, 1, 2);     // First arg is context, rest are function arguments
     ```
 
-  * 函式調用不會對傳入的引數做任何型別檢查，也不會檢查引數個數
+  * Function invocation doesn't check argument types or count
 
-  * 函式調用的引數比宣告的參數少時，額外的參數會被設為 undefined
+  * Fewer arguments than parameters: Extra parameters set to undefined
 
-  * 函式調用的引數比宣告的參數多時，可透過 `arguments` 參考
+  * More arguments than parameters: Access extras via `arguments`
 
-  * arguments 是一種類陣列物件 (_array-like object_)
+  * `arguments` is array-like object
 
-    ex :
-
+    Example:
     ```javascript
     function f(x, y, z) {
-
-        console.log(arguments[0]);         // arguments[0] 等於，引數 x
-        console.log(arguments[1]);         // arguments[1] 等於，引數 y
-        console.log(arguments[2]);         // arguments[2] 等於，引數 z
-
-        // 三個引數被調用
-
-        console.log(arguments.length);     // => 3
+      console.log(arguments[0]);         // arguments[0] is same as x
+      console.log(arguments[1]);         // arguments[1] is same as y
+      console.log(arguments[2]);         // arguments[2] is same as z
+      console.log(arguments.length);     // => 3 (if called with 3 args)
     }
     ```
 
-  * 函式不只是語法，它也是「值」(_value_)
+  * Functions are not just syntax - they're values
 
-    ex :
-
+    Example:
     ```javascript
-    function square(x) {return x * x;}             // 定義一個函式
-
-    var s = square;                                // 現在 s 與 square 參考至相同的函式
-    square(4);                                     // => 16
-    s(4);                                          // => 16
-
-    var a = [function(x) {return x * x;}, 20];     // 一個陣列字面值
-    a[0](a[1]);                                    // => 400
+    function square(x) {return x*x;}             // Define function
+    var s = square;                              // s and square reference same function
+    square(4);                                   // => 16
+    s(4);                                        // => 16
+    
+    var a = [function(x) {return x*x;}, 20];     // Array literal
+    a[0](a[1]);                                  // => 400
     ```
 
-  * 函式是一種特化的物件，所以它也有特性
+  * Functions are specialized objects and can have properties
 
-    ex :
-
+    Example:
     ```javascript
-    uniqueInteger.counter = 0;            // 初始化這個函式物件的 counter 特性
-
-    function uniqueInteger () {
-      return uniqueInteger.counter++;     // 回傳並遞增 counter 特性
+    uniqueInteger.counter = 0;            // Initialize counter property
+    function uniqueInteger() {
+      return uniqueInteger.counter++;     // Return and increment counter
     }
     ```
 
-  * 參數傳遞方式：為 Call by sharing，複製參考到新的參照上，修改會改變原有參照，賦予新值則會產生新的參考
+  * Parameter passing: Call by sharing - copies reference to new reference. Modifications affect original, assignments create new references.
 
-    ex :
-
+    Example:
     ```javascript
     var arr1 = [1,2,3];
-    var arr2 = arr1;       // arr1 和 arr2，指向相同的參考上
-
-    arr2 = [4,5,6];        // 新建立一個 Array，並將它指向 arr2
-
+    var arr2 = arr1;       // arr1 and arr2 point to same reference
+    arr2 = [4,5,6];        // Create new Array, assign to arr2
     console.log(arr1);     // => [1, 2, 3]
     ```
 
-  * 每個函式都有一個 prototype 特性，用來參考 prototype 物件，透過 new 關鍵字實例化物件，則會用此 prototype 物件繼承其他物件
+  * Each function has a prototype property referencing a prototype object. When creating objects with `new`, this prototype is used for inheritance.
 
-  * call()、apply()：用於間接呼叫函式，可操作原本物件上沒有的方法，並指定運行環境
+  * `call()`, `apply()`: For indirect invocation, allowing methods to be called on objects that don't originally have them, specifying execution context.
 
-    - call(thisArg, arg1, arg2)：第一個參數為調用情境，第二個開始的參數為欲代入函式的引數
+    - `call(thisArg, arg1, arg2)`: First arg is context, rest are function arguments
+    - `apply(thisArg, [argsArray])`: First arg is context, second is array of arguments
 
-    - apply(thisArg, [argsArray])：第一個參數為調用情境，第二個參數是一個陣列，其內容為欲代入函式的引數
-
-    ex :
-
+    Example:
     ```javascript
     var obj1 = {
-
-      getName: function () {
-
+      getName: function() {
         return this.name;
       }
     };
-
-    var obj2 = {                              // obj2 沒有 getName()
-
+    var obj2 = {                              // obj2 has no getName()
       name: 'Justin'
-    }
-
-    console.log(obj1.getName.call(obj2));     // => 'Justin'，透過 call() 讓 obj2 間接呼叫 obj1 的函式
+    };
+    console.log(obj1.getName.call(obj2));     // => 'Justin', obj2 indirectly calls obj1's method
     ```
 
-  * bind()：用於將一個函式繫結至 (bind to) 一個物件
+  * `bind()`: Binds a function to an object
 
-    ex：
-
+    Example:
     ```javascript
-    // 當你在函式 f 上調用 bind() 方法，並傳入物件 o，這個方法會回傳一個新的函式
-    // 調用這個新函式，會把原本的函式 f 當作 o 的方法來調用
-    // 任何傳給新函式的引數都會傳入原本的函式
-
-    function f(y) { return this.x + y; }     // 這個函式需要繫結
-    var o = { x: 1 };                        // 我們會繫結至物件 o
-    var g = f.bind(o);                       // 呼叫 g(x) 會調用 o.f(x)
+    function f(y) { return this.x + y; }     // Function to bind
+    var o = { x: 1 };                        // Object to bind to
+    var g = f.bind(o);                       // Calling g(x) invokes o.f(x)
     g(2);                                    // => 3
     ```
 
-  * **回呼 (_callback_)**：是一個函式，將其當作引數放進另一個函式等待被操作，前者就是後者的回呼
+  * **Callback**: A function passed as an argument to another function to be executed later
 
-    ex :
-
+    Example:
     ```javascript
     var func = function() {
-
       console.log('Hello World');
     };
-
-    window.addEventListener('load', func, false);     // => 'Hello World'，觸發 load 事件時，呼叫 func()
+    window.addEventListener('load', func, false);     // => 'Hello World' when load event triggers
     ```
 
-  * **閉包 (_closure_)**：closure is a function having access to the parent scope, even after the parent function has closed.
+  * **Closure**: A function that has access to the parent scope, even after the parent function has closed.
+    - Enables "private" variables.
+    - Closures capture the bindings of local variables (and parameters) from their outer function's scope.
 
-    - It makes it possible for a function to have "**private**" variables.
-
-    - closure 會捕捉它們外層函式 (即它們被定義之處) 的區域變數 (以及參數) 之繫結
-
-    ex :
-
+    Example:
     ```javascript
-    // JavaScript 函式執行時使用的範疇鏈 (scope chain)，是在它們定義時生效的範疇鏈
-    // 巢狀函式 func() 定義時的範疇鏈，其中的變數 scope 是繫結至 (bound to) 值 "local scope"
-    // 這個繫結 (binding) 在 func 執行時仍然有效，不管它是在何處被執行
-
     var scope = 'global scope';
-
     function checkScope() {
-
       var scope = 'local scope';
-
       function func() {
-
         return console.log(scope);
       }
-
       return func;
     }
-
-    checkScope()();    // => 'local scope'，func() 為 closure
+    checkScope()();    // => 'local scope', func() is a closure
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1003,16 +786,14 @@ Functions
 
 ## Reference Information
 
-JavaScript : The Definitive Guide,  6E Traditional Chinese (Author：David Flanagan)
+JavaScript: The Definitive Guide, 6E Traditional Chinese (Author: David Flanagan)
 
-Speaking JavaScript, Traditional Chinese (Author：Dr. Axel Rauschmayer)
+Speaking JavaScript, Traditional Chinese (Author: Dr. Axel Rauschmayer)
 
-JavaScript — call-by-sharing (Author：Avinash Kondeti)
-
+JavaScript — call-by-sharing (Author: Avinash Kondeti)
   - https://medium.com/wwstay-engineering/javascript-call-by-sharing-2d3ca42c4d02#.ms38pikzt
 
-簡單介紹JavaScript參數傳遞 (Author：Tommy Lin)
-
+Introduction to JavaScript Parameter Passing (Author: Tommy Lin)
   - http://www.slideshare.net/YiTaiLin/java-script-63031051
 
 <br />
