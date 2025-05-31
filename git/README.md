@@ -342,3 +342,15 @@ Git Official Document (Website：[git official document](https://git-scm.com/doc
 cmatskas.com (Website：[Delete Git branch locally and remotely](https://cmatskas.com/delete-git-branch-locally-and-remotely/))
 
 <br />
+
+---
+
+## 📜 License
+
+MIT – free for learning and experimentation.
+
+---
+
+### 🙋‍♂️ Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
