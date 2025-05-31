@@ -1345,3 +1345,15 @@ Anatomy of an HTML element (Website：[Mozilla Developer Network](https://develo
 Scripting (Website : [WHATWG HTML Living Standard](https://html.spec.whatwg.org/multipage/scripting.html#scripting-3))
 
 <br />
+
+---
+
+## 📜 License
+
+MIT – free for learning and experimentation.
+
+---
+
+### 🙋‍♂️ Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
