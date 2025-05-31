@@ -797,3 +797,15 @@ Introduction to JavaScript Parameter Passing (Author: Tommy Lin)
   - http://www.slideshare.net/YiTaiLin/java-script-63031051
 
 <br />
+
+---
+
+## 📜 License
+
+MIT – free for learning and experimentation.
+
+---
+
+### 🙋‍♂️ Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
