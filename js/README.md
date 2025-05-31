@@ -317,3 +317,15 @@
 * Introduction to JavaScript Parameter Passing (Author: Tommy Lin)
 * JavaScript ECMAScript 6 Primer (Author: Ruan Yifeng)
 * Exploring ES6: Upgrade to the next version of JavaScript (Author: Dr. Axel Rauschmayer)
+
+---
+
+## 📜 License
+
+MIT – free for learning and experimentation.
+
+---
+
+### 🙋‍♂️ Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
