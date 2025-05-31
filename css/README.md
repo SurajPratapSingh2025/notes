@@ -803,3 +803,16 @@ Attribute Selectors (Website: [Mozilla Developer Network](https://developer.mozi
 HTML Elements: Block-Level vs. Inline Elements (Website: [ThoughtCo](https://www.thoughtco.com/block-level-vs-inline-elements-3468615))
 
 Flexible box ("Flexbox") layout in Internet Explorer 10 (Website: [Microsoft Developer Network](https://msdn.microsoft.com/en-us/library/hh673531.aspx))
+
+---
+
+## 📜 License
+
+MIT – free for learning and experimentation.
+
+---
+
+### 🙋‍♂️ Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
