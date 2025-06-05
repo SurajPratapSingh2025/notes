@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD041 -->
-Copyright Act 1957—present the [sps](https://github.com/SurajPratapSingh2025)
+In India, Copyright Act 1957—present the [sps](https://github.com/SurajPratapSingh2025)
 and other public [contributors].
 
 **This work is licensed under the
